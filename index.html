@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>BitStash</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags unless you know what you are doing -->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags unless you know what you are doing -->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <header>
+        <nav class="navbar navbar-inverse flex-container"> <!-- navbar-default -->
+          <div class="signed-in-content user-meta">
+            <span id="user-email-id">
+            </span>
+            <!-- Single button -->
+              <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Settings <span class="caret"></span>
+                </button>
+                <form id="change-password" class="logged-in dropdown-menu">
+                  <!-- <fieldset> -->
+                    <!-- <legend>Change Password</legend> -->
+                    <input type="password" name="passwords[old]" placeholder="Old Password">
+                    <input type="password" name="passwords[new]" placeholder="New Password">
+                    <input type="submit" name="submit" value="Change Password">
+                  <!-- </fieldset> -->
+                </form>
+              </div>
+            <form id="sign-out" class="logged-in">
+              <fieldset>
+                <!-- <legend>Sign Out</legend> -->
+                <input type="submit" name="submit" value="Sign Out">
+              </fieldset>
+            </form>
+          </div>
+              <a id="app-name" class="navbar-brand navbar-nav navbar-collapse flex-item">
+                BitStash
+              </a>
+        </nav>
+      </header>
+      <main>
+        <div class="container">
+          <div class="jumbotron landing-content">
+            <div class="landing-text flow-text"><h1><span>"</span>STASHING <BR>YOUR IMPORTANT <BR> BITS &amp; BYTES<span>"</span></h1></div>
+            <div class="row">
+              <div class="col-md-6 flex-container">
+                <form id="sign-in" class="logged-out">
+                  <fieldset>
+                    <legend>Returning Users</legend>
+                    <input type="text" name="credentials[email]" placeholder="Enter Email" id="sign-in-email"><br>
+                    <input type="password" name="credentials[password]" placeholder="Enter Password"><br>
+                    <input type="submit" name="submit" value="Sign in">
+                  </fieldset>
+                </form>
+              </div>
+              <div class="col-md-6 flex-container">
+                <form id="sign-up" class="logged-out">
+                  <fieldset>
+                    <legend>Create an Account</legend>
+                    <input type="text" name="credentials[email]" placeholder="Enter Email"> <br>
+                    <input type="password" name="credentials[password]" placeholder="Enter Password"> <br>
+                    <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password"> <br>
+                    <input type="submit" name="submit" value="Sign up">
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+            <div class="uiFeedback"></div>
+          </div>
+
+          <div class="signed-in-content">
+          <div class="uiFeedback"></div>
+            <form id="multipart-form-data" enctype="multipart/form-data">
+              <fieldset>
+                <label>
+                  Name
+                  <input type="text" name="file[name]" id="file-name-input" required>
+                </label>
+                <input type="hidden" name="user[_id]" value="" id="hidden-user-id">
+                <label>
+                  <input type="file" name="file[path]" id="upload-file-path">
+                </label>
+                <input type="submit" name="submit" value="Upload" id="upload-btn">
+              </fieldset>
+            </form>
+          </div> <!-- close-->
+
+          <div class="table-div signed-in-content" id="files-display-container">
+          </div>
+        </div>
+      </main>
+    </body>
+</html>
