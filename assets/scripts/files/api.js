@@ -4,7 +4,6 @@ const config = require('../config')
 const store = require('../store')
 
 const createFile = function (data) {
-  // console.log('data for ajax is: ', data)
   return $.ajax({
     url: config.apiOrigin + '/files',
     method: 'POST',
@@ -18,7 +17,6 @@ const createFile = function (data) {
 }
 
 const getAllFiles = function (data) {
-  // console.log('data inside of getAllFiles is:', data)
   return $.ajax({
     url: config.apiOrigin + '/files',
     method: 'GET',

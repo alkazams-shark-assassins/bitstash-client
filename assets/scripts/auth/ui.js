@@ -4,74 +4,59 @@ const filesUi = require('../files/ui')
 const store = require('../store')
 
 const signUpSuccess = function (data) {
-  // console.log(data)
   filesUi.userMessageBox('.uiFeedback', 'Successfully signed up!', '#630099', 4000)
 }
 
 const signUpFailure = function (data) {
-  // console.error(error)
-  // filesUi.userMessageBox('.uiFeedback', 'Sign up failed!', '#bf6d20')
   $('.uiFeedback').text('Sign up failed!')
   $('.uiFeedback').css('color', '#bf6d20')
 }
 
 const signInSuccess = function (data) {
-  // console.log(data)
   filesUi.userMessageBox('.uiFeedback', 'Successfully signed in!', '#630099', 4000)
-  // $('.logged-in').removeClass('hide')
-  // $('.game-functionality').removeClass('hide')
-  // $('.logged-out').addClass('hide')
   store.user = data.user
 
   // set hidden user._id attribute to send with form data to API
   $('#hidden-user-id').attr('value', store.user._id)
-  // console.log('the stored user.id', store.user._id)
-  // console.log('the stored user token is:', store.user.token)
+  // adds the user's email address to the span with id of 'user-email-id' in index.html
   $('#user-email-id').text(store.user.email)
+  // hides the jumbotron with class of 'landing-content' in index.html
   $('.landing-content').hide()
+  // shows the div with class of 'signed-in-content' in index.html.
   $('.signed-in-content').show()
   return store.user
 }
 
 const signInFailure = function (data) {
-  // console.error(error)
   $('.uiFeedback').text('Sign in failed!')
   $('.uiFeedback').css('color', '#bf6d20')
 }
 
 const changePasswordSuccess = function (data) {
-  // console.log('Changed password!')
   filesUi.userMessageBox('.uiFeedback', 'Changed password!', '#630099', 4000)
-  // $('.uiFeedback').text('Changed password!')
-  // $('.uiFeedback').css('color', '#630099')
 }
 
 const changePasswordFailure = function (data) {
-  // console.error(error)
   filesUi.userMessageBox('.uiFeedback', 'Error changing password!', '#630099', 6000)
-  // $('.uiFeedback').text('Error changing password!')
-  // $('.uiFeedback').css('color', '#bf6d20')
 }
 
 const signOutSuccess = function () {
-  // console.log('Signed out!')
   filesUi.userMessageBox('.uiFeedback', 'Signed out!', '#630099', 4000)
-  // $('.uiFeedback').text('Signed out!')
-  // $('.uiFeedback').css('color', '#630099')
-  // $('.logged-in').addClass('hide')
-  // $('.game-functionality').addClass('hide')
-  // $('.game-board').addClass('hide')
-  // $('.logged-out').removeClass('hide')
-  // $('.game-search').addClass('hide')
-  // $('.games-search').addClass('hide')
+  // sets store.user to 'null'
   store.user = null
+  // sets store.files to 'null'
   store.files = null
+  // empties out the 'files-display-container'
   $('#files-display-container').empty()
+  // hides the div with class of 'signed-in-content' in index.html.
   $('.signed-in-content').hide()
+  // shows the jumbotron with class of 'landing-content' in index.html
   $('.landing-content').show()
   // this removes the user-id from the hidden field in upload form.
   $('#hidden-user-id').attr('value', '')
+  // clears the 'file-name-input'
   $('#file-name-input').val('')
+  // clears the 'upload-file-path'
   $('#upload-file-path').val('')
 }
 
